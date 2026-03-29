@@ -24,7 +24,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   /* ─── TEXTOS JUSTIFICADOS ─── */
   .bodega-text p,
@@ -227,39 +227,21 @@
   }
 
   @media (max-width: 768px) {
-    /* Nav base en móvil */
     nav {
-      position: relative;
       padding: 0.4rem 0.8rem;
-      padding-right: 3.4rem; /* espacio para hamburguesa */
     }
-
-    /* logo1 izquierda */
-    .nav-left .nav-logo-img { height: 48px; }
-
-    /* texto centrado absolutamente */
-    .nav-brand {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
+    /* logo1 izquierda: más pequeño */
+    .nav-left .nav-logo-img { height: 44px; }
+    /* logo2 oculto en móvil */
+    .nav-logo-right { display: none; }
+    /* texto DON JOSÉ centrado */
+    .nav-brand { flex: 1; align-items: center; }
     .nav-logo { display: flex; }
     .nav-logo .nav-sub { display: none; }
     .nav-logo .small-text { font-size: 0.58rem; }
     .nav-logo .big-text { font-size: 0.95rem; }
-
-    /* ocultar logo2 en móvil para no saturar */
-    .nav-logo-right { display: none; }
-
-    /* hamburguesa absoluta a la derecha */
-    .menu-toggle {
-      display: flex;
-      position: absolute;
-      top: 50%;
-      right: 0.6rem;
-      transform: translateY(-50%);
-    }
+    /* hamburguesa visible */
+    .menu-toggle { display: flex; }
   }
 
   /* ─── HERO ─── */
