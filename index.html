@@ -1222,6 +1222,159 @@
   .contacto-card:hover {
     box-shadow: 0 0 24px rgba(201,168,76,0.15);
   }
+
+  /* ══════════════════════════════════════════
+     IMÁGENES PROFESIONALES
+  ══════════════════════════════════════════ */
+
+  /* ── Foto de fondo en hero ── */
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    opacity: 0.18;
+    z-index: 0;
+    filter: saturate(0.55) sepia(0.35) brightness(0.75);
+  }
+
+  /* ── Foto en sección bodega ── */
+  .bodega-photo-wrap {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.18);
+  }
+  .bodega-photo-wrap img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: saturate(0.8) brightness(0.75);
+    transition: transform 0.6s ease, filter 0.6s ease;
+  }
+  .bodega-photo-wrap:hover img {
+    transform: scale(1.04);
+    filter: saturate(1) brightness(0.88);
+  }
+  .bodega-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 45%, rgba(15,5,0,0.75));
+    pointer-events: none;
+  }
+  .bodega-photo-caption {
+    position: absolute;
+    bottom: 0.9rem; left: 1.2rem;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--oro-light);
+    letter-spacing: 0.08em;
+    z-index: 1;
+  }
+
+  /* ── Foto en visita (reemplaza placeholder) ── */
+  .visita-photo-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .visita-photo-wrap img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center 60%;
+    display: block;
+    filter: saturate(0.75) brightness(0.7);
+    transition: transform 0.6s ease;
+  }
+  .visita-photo-wrap:hover img { transform: scale(1.04); }
+  .visita-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 35%, rgba(10,4,1,0.88));
+    pointer-events: none;
+  }
+  .visita-photo-info {
+    position: absolute;
+    bottom: 1.2rem; left: 1.5rem; right: 1.5rem;
+    z-index: 1;
+  }
+  .visita-photo-info strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--crema);
+    margin-bottom: 0.3rem;
+  }
+  .visita-photo-info span {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.83rem;
+    color: var(--gris-calido);
+    line-height: 1.5;
+  }
+
+  /* ── Galería de experiencias ── */
+  .experiencias-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+    max-width: 1100px;
+    margin: 2.5rem auto 0;
+    padding: 0 2rem;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.7) brightness(0.65);
+    transition: transform 0.55s ease, filter 0.55s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.08);
+    filter: saturate(1) brightness(0.85);
+  }
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(10,4,1,0.75));
+    pointer-events: none;
+  }
+  .gallery-caption {
+    position: absolute;
+    bottom: 0.9rem; left: 1rem; right: 1rem;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--crema-dark);
+    letter-spacing: 0.06em;
+    z-index: 1;
+  }
+  .gallery-caption strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--crema);
+    margin-bottom: 0.1rem;
+  }
+  @media (max-width: 768px) {
+    .experiencias-gallery { grid-template-columns: 1fr; padding: 0 1rem; }
+    .gallery-item img { height: 200px; }
+  }
 </style>
 </head>
 <body>
@@ -1248,6 +1401,9 @@
 
 <!-- ─── HERO ─── -->
 <section id="inicio">
+  <img class="hero-bg-img"
+       src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1920&h=1080&fit=crop&q=85"
+       alt="" aria-hidden="true" loading="eager">
   <div class="hero-vines"></div>
   
   <!-- Vides decorativas SVG -->
@@ -1322,6 +1478,11 @@
     </div>
 
     <div class="bodega-visual">
+      <div class="bodega-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=700&h=300&fit=crop&q=85"
+             alt="Bodega y barricas Don José" loading="lazy">
+        <div class="bodega-photo-caption">Bodega y Viñedos · Turumayo, Tarija</div>
+      </div>
       <div class="bodega-frame">
         <div class="big-year">40+</div>
         <div class="bodega-stats">
@@ -1460,21 +1621,49 @@
     </div>
 
     <div>
-      <div class="visita-map-placeholder">
-        <div class="map-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <p>
-          <strong>Comunidad Turumayo</strong><br>
-          Municipio de Uriondo<br>
-          A 25 km de Cercado<br>
-          Tarija, Bolivia<br><br>
-          Ruta principal hacia Bermejo
-        </p>
-        <a href="https://wa.me/59167399299?text=Hola%2C%20quiero%20visitar%20la%20bodega%20Don%20Jos%C3%A9" target="_blank" class="btn-secondary" style="margin-top:0.5rem;">Reservar visita por WhatsApp</a>
+      <div class="visita-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=700&h=360&fit=crop&q=85"
+             alt="Valle de la Concepción, Tarija" loading="lazy">
+        <div class="visita-photo-info">
+          <strong>Comunidad Turumayo · Uriondo</strong>
+          <span>A 25 km de Cercado · Tarija, Bolivia<br>Ruta principal hacia Bermejo</span>
+        </div>
+      </div>
+      <div style="margin-top:0.8rem; text-align:center;">
+        <a href="https://wa.me/59167399299?text=Hola%2C%20quiero%20visitar%20la%20bodega%20Don%20Jos%C3%A9" target="_blank" class="btn-secondary">Reservar visita por WhatsApp</a>
       </div>
       <div style="margin-top:1.5rem; background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.15); padding:1.5rem; text-align:center;">
         <p style="font-family:'IM Fell English',serif; font-style:italic; color:var(--oro); font-size:1.05rem; line-height:1.7;">
           "Un lugar bendecido por Dios, con el atractivo turístico del Cañón de la Angostura, visitado por turistas de Argentina y visitantes internacionales."
         </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Galería de experiencias -->
+  <div class="experiencias-gallery">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop&q=85"
+           alt="Viñedos Don José" loading="lazy">
+      <div class="gallery-caption">
+        <strong>Los Viñedos</strong>
+        Vides artesanales de altura
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=600&h=300&fit=crop&q=85"
+           alt="Degustación de vinos Don José" loading="lazy">
+      <div class="gallery-caption">
+        <strong>Degustación</strong>
+        Vinos y singanis artesanales
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&h=300&fit=crop&q=85"
+           alt="Vendimia chapaca" loading="lazy">
+      <div class="gallery-caption">
+        <strong>Vendimia</strong>
+        Cosecha chapaca tradicional
       </div>
     </div>
   </div>
