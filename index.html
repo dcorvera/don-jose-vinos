@@ -158,6 +158,22 @@
   }
   @media (max-width: 768px) {
     .nav-logo-img { height: 38px; }
+
+    /* Centrar el texto DON JOSÉ entre los dos logos en móvil */
+    nav { position: relative; }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      align-items: center;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .nav-logo .small-text { text-align: center; }
+    .nav-logo .big-text   { text-align: center; font-size: 0.95rem; }
+    .nav-logo .nav-sub    { display: none; }
   }
 
   /* ─── HERO ─── */
@@ -1863,7 +1879,7 @@
 
     <div>
       <div class="visita-photo-wrap">
-        <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=700&h=360&fit=crop&q=85"
+        <img src="https://don-jose-vinos.vercel.app/images/foto2.png"
              alt="Valle de la Concepción, Tarija" loading="lazy">
         <div class="visita-photo-info">
           <strong>Comunidad Turumayo · Uriondo</strong>
@@ -1884,7 +1900,7 @@
   <!-- Galería de experiencias -->
   <div class="experiencias-gallery">
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop&q=85"
+      <img src="https://don-jose-vinos.vercel.app/images/foto1.png"
            alt="Viñedos Don José" loading="lazy">
       <div class="gallery-caption">
         <strong>Los Viñedos</strong>
