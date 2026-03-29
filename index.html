@@ -1152,10 +1152,69 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { display: none; }
-    nav ul.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(6,6,6,0.98); padding: 1rem 2rem; gap: 1rem; }
+    nav { padding: 0.7rem 1.2rem; position: relative; }
     .menu-toggle { display: flex; }
+
+    /* ── Menú cajón lateral (drawer) ── */
+    nav ul {
+      display: flex !important;           /* siempre en DOM, controlado por transform */
+      flex-direction: column;
+      align-items: flex-start;
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(270px, 80vw);
+      background: rgba(8,8,8,0.97);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-left: 1px solid rgba(201,168,76,0.15);
+      box-shadow: -10px 0 50px rgba(0,0,0,0.7);
+      padding: 5rem 1.8rem 2rem;
+      gap: 0;
+      z-index: 300;
+      transform: translateX(110%);
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    nav ul.open {
+      transform: translateX(0);
+    }
+    nav ul li {
+      width: 100%;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+    nav ul li:last-child { border-bottom: none; }
+    nav ul li a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1rem !important;
+      letter-spacing: 0.2em !important;
+    }
+    nav ul li a.nav-wa {
+      margin-top: 1rem;
+      text-align: center;
+      padding: 0.7rem 1rem;
+    }
+
+    /* ── Fondo oscuro al abrir menú ── */
+    #nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 250;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    #nav-backdrop.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ── Hamburguesa se convierte en X ── */
+    .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── Layout ── */
     .bodega-grid { grid-template-columns: 1fr; gap: 3rem; }
     .visita-inner { grid-template-columns: 1fr; }
     .contacto-cards { grid-template-columns: 1fr; }
@@ -1650,11 +1709,12 @@
   <!-- Logo derecha + hamburguesa móvil -->
   <div class="nav-right">
     <img class="nav-logo-img" src="images/logo2.png" alt="Bodega Los Hijos de Sánchez">
-    <button class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('open')" aria-label="Menú">
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+<div id="nav-backdrop"></div>
 
 <!-- ─── HERO ─── -->
 <section id="inicio">
@@ -2256,6 +2316,24 @@
 </footer>
 
 <script>
+  /* ── Menú cajón lateral ── */
+  function toggleMenu() {
+    var menu     = document.getElementById('nav-menu');
+    var backdrop = document.getElementById('nav-backdrop');
+    var btn      = document.querySelector('.menu-toggle');
+    var isOpen   = menu.classList.toggle('open');
+    backdrop.classList.toggle('show', isOpen);
+    btn.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('nav-menu').classList.remove('open');
+    document.getElementById('nav-backdrop').classList.remove('show');
+    document.querySelector('.menu-toggle').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('nav-backdrop').addEventListener('click', closeMenu);
+
   /* ── Navegación suave ── */
   function ir(id, e) {
     if (e) e.preventDefault();
@@ -2263,7 +2341,7 @@
     if (!el) return;
     var navH = document.getElementById('main-nav').offsetHeight || 70;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'smooth' });
-    document.getElementById('nav-menu').classList.remove('open');
+    closeMenu();
   }
 
   /* ── Filtro de catálogo ── */
