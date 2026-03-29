@@ -1751,26 +1751,28 @@
     <img class="nav-logo-img" src="images/logo1.png" alt="Vinos y Singanis Don José">
   </div>
 
-  <!-- Marca + menú centrados -->
+  <!-- Texto marca: visible solo en móvil -->
   <div class="nav-brand">
     <div class="nav-logo">
       <span class="small-text">Vinos y Singanis</span>
       <span class="big-text">DON JOSÉ</span>
       <span class="nav-sub">Un vino tarijeño con sabor chapaco</span>
     </div>
-    <ul id="nav-menu">
-      <li><a href="#inicio" onclick="ir('inicio')">Inicio</a></li>
-      <li><a href="#bodega" onclick="ir('bodega')">La Bodega</a></li>
-      <li><a href="#historia" onclick="ir('historia')">Historia</a></li>
-      <li><a href="#visita" onclick="ir('visita')">Visítanos</a></li>
-      <li><a href="#catalogo" onclick="ir('catalogo')">Catálogo</a></li>
-      <li><a href="#contacto" onclick="ir('contacto')" class="nav-wa">📞 Contacto</a></li>
-    </ul>
   </div>
+
+  <!-- Menú: visible en desktop, dropdown en móvil -->
+  <ul id="nav-menu">
+    <li><a href="#inicio" onclick="ir('inicio')">Inicio</a></li>
+    <li><a href="#bodega" onclick="ir('bodega')">La Bodega</a></li>
+    <li><a href="#historia" onclick="ir('historia')">Historia</a></li>
+    <li><a href="#visita" onclick="ir('visita')">Visítanos</a></li>
+    <li><a href="#catalogo" onclick="ir('catalogo')">Catálogo</a></li>
+    <li><a href="#contacto" onclick="ir('contacto')" class="nav-wa">📞 Contacto</a></li>
+  </ul>
 
   <!-- Escudo derecha + hamburguesa -->
   <div class="nav-right">
-    <img class="nav-logo-img" src="images/logo2.png" alt="Bodega Los Hijos de Sánchez">
+    <img class="nav-logo-img nav-logo-right" src="images/logo2.png" alt="Bodega Los Hijos de Sánchez">
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
