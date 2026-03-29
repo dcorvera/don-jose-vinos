@@ -7,19 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --tierra: #3a1f0d;
-    --tierra-mid: #5c2d0e;
-    --tierra-light: #8b4513;
-    --arcilla: #c4732a;
+    --tierra: #0c0c0c;
+    --tierra-mid: #141414;
+    --tierra-light: #252525;
+    --arcilla: #b8962e;
     --oro: #c9a84c;
     --oro-light: #e8cc7a;
     --crema: #f5ead8;
     --crema-dark: #e8d5b7;
-    --vino: #6b1a1a;
-    --vino-dark: #3d0e0e;
+    --vino: #1c1c1c;
+    --vino-dark: #0c0c0c;
     --blanco: #fdf8f0;
-    --gris-calido: #a89880;
-    --sombra: rgba(30,10,0,0.6);
+    --gris-calido: #8a8a8a;
+    --sombra: rgba(0,0,0,0.7);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,7 +53,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.4rem 3rem;
-    background: linear-gradient(to bottom, rgba(20,8,2,0.97), rgba(20,8,2,0.7));
+    background: linear-gradient(to bottom, rgba(6,6,6,0.97), rgba(6,6,6,0.7));
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(201,168,76,0.25);
     transition: all 0.3s;
@@ -136,9 +136,9 @@
     text-align: center;
     overflow: hidden;
     background: 
-      radial-gradient(ellipse at 30% 50%, rgba(107,26,26,0.4) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 30%, rgba(92,45,14,0.5) 0%, transparent 60%),
-      linear-gradient(160deg, #1a0a04 0%, #2d1208 40%, #1a0804 100%);
+      radial-gradient(ellipse at 30% 50%, rgba(20,20,20,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 30%, rgba(22,22,22,0.5) 0%, transparent 60%),
+      linear-gradient(160deg, #080808 0%, #111111 40%, #080808 100%);
   }
 
   .hero-vines {
@@ -152,8 +152,8 @@
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(circle at 10% 80%, rgba(139,69,19,0.15) 0%, transparent 50%),
-      radial-gradient(circle at 90% 20%, rgba(107,26,26,0.2) 0%, transparent 50%);
+      radial-gradient(circle at 10% 80%, rgba(35,35,35,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 90% 20%, rgba(20,20,20,0.2) 0%, transparent 50%);
   }
 
   /* SVG decorativo de vid */
@@ -393,7 +393,7 @@
   /* ─── SOBRE LA BODEGA ─── */
   #bodega {
     padding: 8rem 2rem;
-    background: linear-gradient(180deg, var(--tierra) 0%, #200f05 50%, var(--tierra) 100%);
+    background: linear-gradient(180deg, var(--tierra) 0%, #0d0d0d 50%, var(--tierra) 100%);
   }
 
   .bodega-grid {
@@ -471,7 +471,7 @@
   }
 
   .bodega-frame {
-    background: linear-gradient(135deg, rgba(92,45,14,0.3), rgba(107,26,26,0.2));
+    background: linear-gradient(135deg, rgba(22,22,22,0.3), rgba(20,20,20,0.2));
     border: 1px solid rgba(201,168,76,0.2);
     padding: 3rem 2rem;
     text-align: center;
@@ -528,7 +528,7 @@
   /* ─── HISTORIA ─── */
   #historia {
     padding: 8rem 2rem;
-    background: linear-gradient(160deg, #200f05 0%, #2d1208 100%);
+    background: linear-gradient(160deg, #0d0d0d 0%, #111111 100%);
     position: relative;
     overflow: hidden;
   }
@@ -618,7 +618,7 @@
   /* ─── VISITA LA BODEGA ─── */
   #visita {
     padding: 6rem 2rem;
-    background: linear-gradient(to bottom, #200f05, var(--tierra));
+    background: linear-gradient(to bottom, #0d0d0d, var(--tierra));
   }
 
   .visita-inner {
@@ -666,8 +666,8 @@
   }
 
   .visita-envio {
-    background: rgba(107,26,26,0.2);
-    border: 1px solid rgba(107,26,26,0.4);
+    background: rgba(20,20,20,0.2);
+    border: 1px solid rgba(20,20,20,0.4);
     padding: 2rem;
     text-align: center;
   }
@@ -686,7 +686,7 @@
   }
 
   .visita-map-placeholder {
-    background: linear-gradient(135deg, rgba(92,45,14,0.3), rgba(58,31,13,0.5));
+    background: linear-gradient(135deg, rgba(22,22,22,0.3), rgba(18,18,18,0.5));
     border: 1px solid rgba(201,168,76,0.15);
     min-height: 280px;
     display: flex;
@@ -755,7 +755,7 @@
   }
 
   .vino-card {
-    background: linear-gradient(160deg, rgba(92,45,14,0.2), rgba(30,10,0,0.6));
+    background: linear-gradient(160deg, rgba(22,22,22,0.2), rgba(0,0,0,0.6));
     border: 1px solid rgba(201,168,76,0.15);
     transition: all 0.4s;
     position: relative;
@@ -767,7 +767,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(160deg, rgba(107,26,26,0.2), transparent);
+    background: linear-gradient(160deg, rgba(20,20,20,0.2), transparent);
     opacity: 0;
     transition: opacity 0.4s;
   }
@@ -899,7 +899,7 @@
   /* ─── CONTACTO ─── */
   #contacto {
     padding: 8rem 2rem;
-    background: linear-gradient(160deg, #200f05 0%, var(--vino-dark) 100%);
+    background: linear-gradient(160deg, #0d0d0d 0%, var(--vino-dark) 100%);
     position: relative;
     overflow: hidden;
   }
@@ -985,13 +985,13 @@
     font-size: 1.1rem;
     letter-spacing: 0.15em;
     transition: all 0.3s;
-    box-shadow: 0 8px 30px rgba(107,26,26,0.4);
+    box-shadow: 0 8px 30px rgba(20,20,20,0.4);
   }
 
   .btn-wa:hover {
     background: var(--tierra-light);
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(139,69,19,0.5);
+    box-shadow: 0 12px 40px rgba(35,35,35,0.5);
   }
 
   .wa-subtitle {
@@ -1004,7 +1004,7 @@
 
   /* ─── FOOTER ─── */
   footer {
-    background: #0d0502;
+    background: #080808;
     padding: 3rem 2rem;
     text-align: center;
     border-top: 1px solid rgba(201,168,76,0.15);
@@ -1042,7 +1042,7 @@
 
   .card-img-wrap {
     width: 100%;
-    background: linear-gradient(180deg, rgba(20,8,2,0.8) 0%, rgba(58,31,13,0.6) 100%);
+    background: linear-gradient(180deg, rgba(6,6,6,0.8) 0%, rgba(18,18,18,0.6) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1056,7 +1056,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 40px;
-    background: linear-gradient(to top, rgba(30,10,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
   }
   .card-img-wrap img {
     height: 200px;
@@ -1099,7 +1099,7 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     nav ul { display: none; }
-    nav ul.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(20,8,2,0.98); padding: 1rem 2rem; gap: 1rem; }
+    nav ul.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(6,6,6,0.98); padding: 1rem 2rem; gap: 1rem; }
     .menu-toggle { display: flex; }
     .bodega-grid { grid-template-columns: 1fr; gap: 3rem; }
     .visita-inner { grid-template-columns: 1fr; }
@@ -1265,7 +1265,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 45%, rgba(15,5,0,0.75));
+    background: linear-gradient(to bottom, transparent 45%, rgba(5,5,5,0.75));
     pointer-events: none;
   }
   .bodega-photo-caption {
@@ -1299,7 +1299,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 35%, rgba(10,4,1,0.88));
+    background: linear-gradient(to bottom, transparent 35%, rgba(5,5,5,0.88));
     pointer-events: none;
   }
   .visita-photo-info {
@@ -1352,7 +1352,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 50%, rgba(10,4,1,0.75));
+    background: linear-gradient(to bottom, transparent 50%, rgba(5,5,5,0.75));
     pointer-events: none;
   }
   .gallery-caption {
@@ -1399,7 +1399,7 @@
   .lb-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(4,1,0,0.95);
+    background: rgba(2,2,2,0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
@@ -2165,7 +2165,8 @@
       <div class="contacto-card">
         <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
         <h4>Redes Sociales</h4>
-        <p>Viñedos y Bodega<br>"Los Hijos De Sánchez"<br>Facebook · Instagram</p>
+        <p>Viñedos y Bodega<br>"Los Hijos De Sánchez"<br>
+          <a href="https://www.facebook.com/share/17okPXMxAe/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/bodegaloshijosdesanchez?igsh=MW53d2xxamJlYTJvaw==" target="_blank" rel="noopener">Instagram</a></p>
       </div>
     </div>
 
@@ -2289,8 +2290,8 @@
     }
     /* nav opacidad */
     mainNav.style.background = sy > 60
-      ? 'rgba(10,4,1,0.98)'
-      : 'linear-gradient(to bottom, rgba(20,8,2,0.97), rgba(20,8,2,0.7))';
+      ? 'rgba(5,5,5,0.98)'
+      : 'linear-gradient(to bottom, rgba(6,6,6,0.97), rgba(6,6,6,0.7))';
   }, { passive: true });
 
   /* ── Contador animado de números ── */
