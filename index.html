@@ -1377,6 +1377,195 @@
     .experiencias-gallery { grid-template-columns: 1fr; padding: 0 1rem; }
     .gallery-item img { height: 200px; }
   }
+
+  /* ══════════════════════════════════════════
+     LIGHTBOX DE CATÁLOGO
+  ══════════════════════════════════════════ */
+  #lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  #lightbox.lb-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .lb-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(4,1,0,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .lb-stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 860px;
+    width: 88vw;
+    padding: 2.5rem 2rem;
+  }
+  .lb-img-col {
+    flex-shrink: 0;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .lb-img-col.lb-fade {
+    opacity: 0;
+    transform: scale(0.93) translateY(8px);
+  }
+  .lb-img-col img {
+    max-height: 65vh;
+    max-width: 240px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 60px rgba(0,0,0,0.95));
+  }
+  .lb-info-col {
+    flex: 1;
+    min-width: 0;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .lb-info-col.lb-fade {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  .lb-info-tipo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--oro);
+    margin-bottom: 0.7rem;
+  }
+  .lb-info-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--crema);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .lb-info-variedad {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--arcilla);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .lb-info-desc {
+    font-size: 0.95rem;
+    color: var(--crema-dark);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+  .lb-info-aroma {
+    font-size: 0.85rem;
+    color: var(--gris-calido);
+    line-height: 1.7;
+    border-left: 2px solid rgba(201,168,76,0.3);
+    padding-left: 1rem;
+    font-style: italic;
+  }
+  .lb-counter {
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: rgba(168,152,128,0.45);
+    text-transform: uppercase;
+  }
+  /* Botones de navegación */
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--oro);
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    line-height: 1;
+  }
+  .lb-nav:hover {
+    background: rgba(201,168,76,0.2);
+    border-color: rgba(201,168,76,0.5);
+  }
+  .lb-nav:active { transform: translateY(-50%) scale(0.94); }
+  .lb-prev { left: 0.8rem; }
+  .lb-next { right: 0.8rem; }
+  .lb-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    background: none;
+    border: 1px solid rgba(201,168,76,0.18);
+    color: var(--gris-calido);
+    font-size: 1rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lb-close-btn:hover { border-color: var(--oro); color: var(--crema); }
+  /* Dots indicadores */
+  .lb-dots {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+  }
+  .lb-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.28);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .lb-dot.active {
+    background: var(--oro);
+    transform: scale(1.5);
+  }
+  /* Cursor zoom en imagen de tarjeta */
+  .card-img-wrap { cursor: zoom-in; }
+
+  @media (max-width: 650px) {
+    .lb-stage { flex-direction: column; gap: 1.2rem; padding: 1rem; width: 94vw; }
+    .lb-img-col { width: 160px; }
+    .lb-img-col img { max-height: 38vh; }
+    .lb-prev { left: 0.2rem; }
+    .lb-next { right: 0.2rem; }
+    .lb-info-desc { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -2176,6 +2365,176 @@
       setTimeout(function () { ripple.remove(); }, 700);
     });
   });
+</script>
+
+<!-- ─── LIGHTBOX ─── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de vinos">
+  <div class="lb-overlay" id="lb-overlay"></div>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Vino anterior">&#8249;</button>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Vino siguiente">&#8250;</button>
+  <button class="lb-close-btn" id="lb-close" aria-label="Cerrar">&#10005;</button>
+  <div class="lb-stage">
+    <div class="lb-img-col" id="lb-img-col">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <div class="lb-info-col" id="lb-info-col">
+      <div class="lb-info-tipo" id="lb-tipo"></div>
+      <div class="lb-info-nombre" id="lb-nombre"></div>
+      <div class="lb-info-variedad" id="lb-variedad"></div>
+      <p class="lb-info-desc" id="lb-desc"></p>
+      <p class="lb-info-aroma" id="lb-aroma"></p>
+      <div class="lb-counter" id="lb-counter"></div>
+    </div>
+  </div>
+  <div class="lb-dots" id="lb-dots"></div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   LIGHTBOX — Galería del catálogo
+══════════════════════════════════════════ */
+(function () {
+  var lb       = document.getElementById('lightbox');
+  var lbImg    = document.getElementById('lb-img');
+  var lbImgCol = document.getElementById('lb-img-col');
+  var lbInfoCol= document.getElementById('lb-info-col');
+  var lbTipo   = document.getElementById('lb-tipo');
+  var lbNombre = document.getElementById('lb-nombre');
+  var lbVariedad = document.getElementById('lb-variedad');
+  var lbDesc   = document.getElementById('lb-desc');
+  var lbAroma  = document.getElementById('lb-aroma');
+  var lbCounter= document.getElementById('lb-counter');
+  var lbDots   = document.getElementById('lb-dots');
+
+  var wines   = [];   // array de datos de vinos visibles
+  var current = 0;
+
+  /* ─ Recolectar vinos actualmente visibles ─ */
+  function collect() {
+    wines = [];
+    document.querySelectorAll('.vino-card').forEach(function (card) {
+      if (card.style.display === 'none') return;
+      var img      = card.querySelector('.card-img-wrap img');
+      var tipo     = card.querySelector('.card-tipo');
+      var nombre   = card.querySelector('.card-nombre');
+      var variedad = card.querySelector('.card-variedad');
+      var desc     = card.querySelector('.card-desc');
+      var aroma    = card.querySelector('.card-aroma');
+      if (!img) return;
+      wines.push({
+        src:      img.src,
+        tipo:     tipo     ? tipo.textContent.trim()     : '',
+        nombre:   nombre   ? nombre.textContent.trim()   : '',
+        variedad: variedad ? variedad.textContent.trim() : '',
+        desc:     desc     ? desc.textContent.trim()     : '',
+        aroma:    aroma    ? aroma.textContent.trim()    : '',
+        card:     card
+      });
+    });
+  }
+
+  /* ─ Construir dots ─ */
+  function buildDots() {
+    lbDots.innerHTML = '';
+    wines.forEach(function (_, i) {
+      var d = document.createElement('button');
+      d.className = 'lb-dot' + (i === current ? ' active' : '');
+      d.setAttribute('aria-label', 'Ver vino ' + (i + 1));
+      d.addEventListener('click', function () { go(i); });
+      lbDots.appendChild(d);
+    });
+  }
+
+  /* ─ Ir a un índice con transición ─ */
+  function go(idx) {
+    if (!wines.length) return;
+    current = ((idx % wines.length) + wines.length) % wines.length;
+    var w = wines[current];
+
+    /* fade out */
+    lbImgCol.classList.add('lb-fade');
+    lbInfoCol.classList.add('lb-fade');
+
+    setTimeout(function () {
+      lbImg.src        = w.src;
+      lbImg.alt        = w.nombre;
+      lbTipo.textContent    = w.tipo;
+      lbNombre.textContent  = w.nombre;
+      lbVariedad.textContent= w.variedad;
+      lbDesc.textContent    = w.desc;
+      lbAroma.textContent   = w.aroma;
+      lbCounter.textContent = (current + 1) + ' · ' + wines.length;
+
+      /* actualizar dots */
+      lbDots.querySelectorAll('.lb-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
+      });
+
+      /* fade in */
+      lbImgCol.classList.remove('lb-fade');
+      lbInfoCol.classList.remove('lb-fade');
+    }, 210);
+  }
+
+  /* ─ Abrir lightbox ─ */
+  function open(card) {
+    collect();
+    if (!wines.length) return;
+    var idx = wines.findIndex(function (w) { return w.card === card; });
+    current = idx >= 0 ? idx : 0;
+    buildDots();
+
+    var w = wines[current];
+    lbImg.src             = w.src;
+    lbImg.alt             = w.nombre;
+    lbTipo.textContent    = w.tipo;
+    lbNombre.textContent  = w.nombre;
+    lbVariedad.textContent= w.variedad;
+    lbDesc.textContent    = w.desc;
+    lbAroma.textContent   = w.aroma;
+    lbCounter.textContent = (current + 1) + ' · ' + wines.length;
+
+    lb.classList.add('lb-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  /* ─ Cerrar ─ */
+  function close() {
+    lb.classList.remove('lb-open');
+    document.body.style.overflow = '';
+  }
+
+  /* ─ Eventos de interfaz ─ */
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-overlay').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function () { go(current - 1); });
+  document.getElementById('lb-next').addEventListener('click', function () { go(current + 1); });
+
+  /* ─ Click en imagen de tarjeta ─ */
+  document.querySelectorAll('.card-img-wrap').forEach(function (wrap) {
+    wrap.addEventListener('click', function () {
+      open(wrap.closest('.vino-card'));
+    });
+  });
+
+  /* ─ Teclado ─ */
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('lb-open')) return;
+    if (e.key === 'Escape')      close();
+    if (e.key === 'ArrowLeft')   go(current - 1);
+    if (e.key === 'ArrowRight')  go(current + 1);
+  });
+
+  /* ─ Swipe táctil ─ */
+  var touchX0 = 0;
+  lb.addEventListener('touchstart', function (e) {
+    touchX0 = e.touches[0].clientX;
+  }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - touchX0;
+    if (Math.abs(dx) > 48) go(dx > 0 ? current - 1 : current + 1);
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
