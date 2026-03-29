@@ -232,8 +232,8 @@
     }
     /* logo1 izquierda: más pequeño */
     .nav-left .nav-logo-img { height: 44px; }
-    /* logo2 oculto en móvil */
-    .nav-logo-right { display: none; }
+    /* logo2 visible en móvil */
+    .nav-logo-right { display: block; height: 44px; }
     /* texto DON JOSÉ centrado */
     .nav-brand { flex: 1; align-items: center; }
     .nav-logo { display: flex; }
@@ -1263,6 +1263,7 @@
 
     /* ── Hamburguesa ── */
     .menu-toggle {
+      display: flex;
       width: 34px;
       height: 34px;
       background: rgba(20,20,20,0.9);
