@@ -125,6 +125,29 @@
   .nav-wa::after { display: none !important; }
   .nav-wa:hover { background: var(--tierra-light); color: white !important; }
 
+  /* ─── LOGOS EN NAV ─── */
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+  .nav-logo-img {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  .nav-logo-img:hover {
+    transform: scale(1.06);
+    filter: drop-shadow(0 4px 12px rgba(201,168,76,0.3));
+  }
+  @media (max-width: 768px) {
+    .nav-logo-img { height: 38px; }
+  }
+
   /* ─── HERO ─── */
   #inicio {
     position: relative;
@@ -843,6 +866,8 @@
     color: var(--crema-dark);
     font-weight: 300;
     margin-bottom: 1.2rem;
+    text-align: justify;
+    hyphens: auto;
   }
 
   .card-aroma {
@@ -852,6 +877,8 @@
     font-weight: 300;
     font-style: italic;
     margin-bottom: 1.2rem;
+    text-align: justify;
+    hyphens: auto;
   }
 
   .card-meta {
@@ -1572,11 +1599,17 @@
 
 <!-- ─── NAVEGACIÓN ─── -->
 <nav id="main-nav">
-  <div class="nav-logo">
-    <span class="small-text">Vinos y Singanis</span>
-    <span class="big-text">DON JOSÉ</span>
-    <span class="nav-sub">Un vino tarijeño con sabor chapaco</span>
+  <!-- Logo izquierda + texto -->
+  <div class="nav-left">
+    <img class="nav-logo-img" src="images/logo1.png" alt="Don José">
+    <div class="nav-logo">
+      <span class="small-text">Vinos y Singanis</span>
+      <span class="big-text">DON JOSÉ</span>
+      <span class="nav-sub">Un vino tarijeño con sabor chapaco</span>
+    </div>
   </div>
+
+  <!-- Menú central -->
   <ul id="nav-menu">
     <li><a href="#inicio" onclick="ir('inicio')">Inicio</a></li>
     <li><a href="#bodega" onclick="ir('bodega')">La Bodega</a></li>
@@ -1585,9 +1618,14 @@
     <li><a href="#catalogo" onclick="ir('catalogo')">Catálogo</a></li>
     <li><a href="#contacto" onclick="ir('contacto')" class="nav-wa">📞 Contacto</a></li>
   </ul>
-  <button class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('open')" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+
+  <!-- Logo derecha + hamburguesa móvil -->
+  <div class="nav-right">
+    <img class="nav-logo-img" src="images/logo2.png" alt="Bodega Los Hijos de Sánchez">
+    <button class="menu-toggle" onclick="document.getElementById('nav-menu').classList.toggle('open')" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -1991,7 +2029,7 @@
         </div>
       </div>
 
-      <!-- DON JOSÉ CLÁSICO TINTO -->
+      <!-- DON JOSÉ CLÁSICO TINTO 
       <div class="vino-card card-tinto" data-tipo="tinto">
         <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
@@ -2017,9 +2055,9 @@
           </div>
           <div class="card-vista"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Color intenso y profundo en tonalidades de rojo y púrpura.</div>
         </div>
-      </div>
+      </div>-->
 
-      <!-- DON JOSÉ SEMIDULCE TINTO -->
+      <!-- DON JOSÉ SEMIDULCE TINTO 
       <div class="vino-card card-tinto" data-tipo="tinto">
         <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
@@ -2045,11 +2083,11 @@
           </div>
           <div class="card-vista"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Color rojo oscuro e intenso, con tonalidades variables.</div>
         </div>
-      </div>
+      </div>-->
 
       <!-- DON JOSÉ BLANCO CLÁSICO -->
       <div class="vino-card card-blanco" data-tipo="blanco">
-        <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1586370434639-0fe43b2d32e6?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
+        <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/clasicoblanco.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
           <div class="card-tipo">Vino Blanco Clásico</div>
           <div class="card-nombre">Don José</div>
@@ -2075,7 +2113,7 @@
         </div>
       </div>
 
-      <!-- DON JOSÉ BLANCO SEMIDULCE -->
+      <!-- DON JOSÉ BLANCO SEMIDULCE
       <div class="vino-card card-blanco" data-tipo="blanco">
         <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1568213816046-0ee1c42bd559?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
@@ -2101,11 +2139,11 @@
           </div>
           <div class="card-vista"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Color amarillo pálido o dorado, con matices verdosos.</div>
         </div>
-      </div>
+      </div> -->
 
       <!-- SINGANI -->
       <div class="vino-card card-singani" data-tipo="singani">
-        <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1558751561-407746deb52b?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
+        <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/moscatel.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
           <div class="card-tipo">Singani · Gotas de Moscatel</div>
           <div class="card-nombre">Don José</div>
