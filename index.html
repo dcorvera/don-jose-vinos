@@ -687,7 +687,7 @@
   .timeline::before {
     content: '';
     position: absolute;
-    left: 24px;
+    left: calc(0.5rem + 24px);
     top: 0; bottom: 0;
     width: 1px;
     background: linear-gradient(to bottom, transparent, var(--oro), var(--arcilla), transparent);
@@ -910,7 +910,14 @@
   .card-header {
     padding: 2rem 2rem 1rem;
     border-bottom: 1px solid rgba(201,168,76,0.1);
-    position: relative;
+  }
+
+  .card-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .card-tipo {
@@ -918,7 +925,6 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--arcilla);
-    margin-bottom: 0.5rem;
   }
 
   .card-nombre {
@@ -938,9 +944,7 @@
   }
 
   .card-badge {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+    flex-shrink: 0;
     background: rgba(201,168,76,0.15);
     border: 1px solid rgba(201,168,76,0.3);
     padding: 0.3rem 0.7rem;
@@ -948,6 +952,7 @@
     letter-spacing: 0.1em;
     color: var(--oro);
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .card-body {
@@ -2081,10 +2086,12 @@
       <div class="vino-card card-tinto" data-tipo="tinto">
         <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/syrah.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Tinto Varietal</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Tinto Varietal</div>
+            <div class="card-badge">Tinto</div>
+          </div>
           <div class="card-nombre">Syráh</div>
           <div class="card-variedad">100% Uva Syrah · Cosecha 2022</div>
-          <div class="card-badge">Tinto</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2109,10 +2116,12 @@
       <div class="vino-card card-tinto" data-tipo="tinto">
         <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/tannat.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Chapaco</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Chapaco</div>
+            <div class="card-badge">Tinto</div>
+          </div>
           <div class="card-nombre">Tannat</div>
           <div class="card-variedad">100% Uva Tannat</div>
-          <div class="card-badge">Tinto</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2137,10 +2146,12 @@
       <div class="vino-card card-rosado" data-tipo="rosado">
         <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/rous.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Rosé</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Rosé</div>
+            <div class="card-badge">Rosado</div>
+          </div>
           <div class="card-nombre">My Rous</div>
           <div class="card-variedad">Vino Rosado · Uva Syrah</div>
-          <div class="card-badge">Rosado</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2165,10 +2176,12 @@
       <div class="vino-card card-tinto" data-tipo="tinto">
         <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/negro.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Tinto Cepéreo</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Tinto Cepéreo</div>
+            <div class="card-badge">Tinto</div>
+          </div>
           <div class="card-nombre">Negro José</div>
           <div class="card-variedad">Tannat, Syrah, Barbera · Cosecha 2022</div>
-          <div class="card-badge">Tinto</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2249,10 +2262,12 @@
       <div class="vino-card card-blanco" data-tipo="blanco">
         <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/clasicoblanco.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Blanco Clásico</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Blanco Clásico</div>
+            <div class="card-badge">Vinos de Altura</div>
+          </div>
           <div class="card-nombre">Don José</div>
           <div class="card-variedad">Moscatel de Alejandría y Chardonnay · Cosecha 2020</div>
-          <div class="card-badge">Vinos de Altura</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2305,10 +2320,12 @@
       <div class="vino-card card-singani" data-tipo="singani">
         <div class="card-img-wrap"><img src="https://don-jose-vinos.vercel.app/images/moscatel.png" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Singani · Gotas de Moscatel</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Singani · Gotas de Moscatel</div>
+            <div class="card-badge">D.O. Controlada</div>
+          </div>
           <div class="card-nombre">Don José</div>
           <div class="card-variedad">100% Moscatel de Alejandría</div>
-          <div class="card-badge">D.O. Controlada</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
