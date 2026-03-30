@@ -652,6 +652,38 @@
     margin-top: 0.3rem;
   }
 
+  /* ─── FOTO VIÑEDO BANNER ─── */
+  .vinedo-banner {
+    position: relative;
+    width: 100%;
+    background: #0c0c0c;
+    overflow: hidden;
+  }
+
+  .vinedo-banner img.vinedo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .vinedo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  .vinedo-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(245,234,216,0.7);
+  }
+
   /* ─── HISTORIA ─── */
   #historia {
     padding: 8rem 2rem;
@@ -1295,6 +1327,10 @@
     .premios-grid { grid-template-columns: 1fr 1fr; }
     .vinos-grid { grid-template-columns: 1fr; }
     .hero-title { font-size: clamp(3rem, 15vw, 5rem); }
+
+    /* ── Reducir espacios verticales en móvil ── */
+    #bodega, #historia, #catalogo, #contacto { padding: 4rem 1.2rem; }
+    #visita { padding: 3.5rem 1.2rem; }
   }
 
   /* ══════════════════════════════════════════
@@ -1907,6 +1943,14 @@
   </div>
 </section>
 
+<!-- ─── FOTO VIÑEDO ─── -->
+<div class="vinedo-banner">
+  <img class="vinedo-img" src="images/campo1.png" alt="Viñedos Valle de la Concepción, Tarija">
+  <div class="vinedo-overlay">
+    <p class="vinedo-caption">Valle de la Concepción · Tarija, Bolivia</p>
+  </div>
+</div>
+
 <!-- ─── HISTORIA ─── -->
 <section id="historia">
   <div class="historia-inner">
@@ -1922,7 +1966,7 @@
         <div class="timeline-content">
           <p class="timeline-year">Hace más de 40 años</p>
           <h3 class="timeline-title">Los orígenes en Turumayo</h3>
-          <p class="timeline-text">José Sánchez y su esposa Alejandra Caro comienzan a cultivar vides en la comunidad de Turumayo, Uriondo, en el corazón del Valle de la Concepción en Tarija, Bolivia. El suelo, agua, clima y aire privilegiados de esta región crean condiciones únicas para uvas de alta calidad.</p>
+          <p class="timeline-text">José Sánchez y su esposa Alejandra Caro comienzan a cultivar vid en la comunidad de Turumayo, Uriondo, en el corazón del Valle de la Concepción en Tarija, Bolivia. El suelo, agua, clima y aire privilegiados de esta región crean condiciones únicas para uvas de alta calidad.</p>
         </div>
       </div>
 
@@ -1956,6 +2000,14 @@
   </div>
 </section>
 
+<!-- ─── FOTO PAREJA ─── -->
+<div class="vinedo-banner">
+  <img class="vinedo-img" src="images/pareja.png" alt="Bodega Los Hijos de Sánchez, Turumayo">
+  <div class="vinedo-overlay">
+    <p class="vinedo-caption">Bodega Los Hijos de Sánchez · Turumayo</p>
+  </div>
+</div>
+
 <!-- ─── VISITA LA BODEGA ─── -->
 <section id="visita">
   <div class="section-header" style="max-width:900px; margin:0 auto 3rem;">
@@ -1974,7 +2026,7 @@
           <div class="service-num">1</div>
           <div class="service-text">
             <h4>Recorrido por el Viñedo</h4>
-            <p>Pasea entre las vides y conoce de cerca el proceso de cultivo artesanal.</p>
+            <p>Pasea entre los viñedos y conoce de cerca el proceso de cultivo artesanal.</p>
           </div>
         </div>
         <div class="service-item">
@@ -2041,7 +2093,7 @@
            alt="Viñedos Don José" loading="lazy">
       <div class="gallery-caption">
         <strong>Los Viñedos</strong>
-        Vides artesanales de altura
+        Vinos artesanales de altura
       </div>
     </div>
     <div class="gallery-item">
@@ -2053,7 +2105,7 @@
       </div>
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&h=300&fit=crop&q=85"
+      <img src="images/campo1.png"
            alt="Vendimia chapaca" loading="lazy">
       <div class="gallery-caption">
         <strong>Vendimia</strong>
@@ -2322,7 +2374,7 @@
 <div class="card-header">
           <div class="card-header-top">
             <div class="card-tipo">Singani · Gotas de Moscatel</div>
-            <div class="card-badge">D.O. Controlada</div>
+            <div class="card-badge">Singani</div>
           </div>
           <div class="card-nombre">Don José</div>
           <div class="card-variedad">100% Moscatel de Alejandría</div>
