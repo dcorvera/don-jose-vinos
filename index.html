@@ -463,8 +463,8 @@
     align-items: center;
     gap: 0.5rem;
     color: var(--gris-calido);
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
+    font-size: 0.95rem;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     animation: bounce 2s infinite;
   }
@@ -571,7 +571,9 @@
     background: rgba(201,168,76,0.08);
     border: 1px solid rgba(201,168,76,0.2);
     padding: 1.2rem;
+    padding-top: 1.8rem;
     text-align: center;
+    overflow: hidden;
   }
 
   .premio-item .medal {
@@ -1090,12 +1092,16 @@
 
   .contacto-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
     margin-top: 4rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
+    .contacto-cards { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 768px) {
     .contacto-cards { grid-template-columns: repeat(2, 1fr); }
   }
 
@@ -1818,6 +1824,77 @@
     .lb-next { right: 0.2rem; }
     .lb-info-desc { display: none; }
   }
+
+  /* ── Galería Reconocimientos ── */
+  .reconocimientos-galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+  .reconocimiento-img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 0.4rem;
+    cursor: zoom-in;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .reconocimiento-img:hover {
+    transform: scale(1.04);
+    border-color: rgba(201,168,76,0.5);
+  }
+  @media (max-width: 600px) {
+    .reconocimientos-galeria { grid-template-columns: 1fr 1fr; }
+    .reconocimiento-img { height: 120px; }
+  }
+
+  /* ── Modal Medallas ── */
+  #medal-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.85);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #medal-modal.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  #medal-modal img {
+    max-width: 88vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.7);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+  }
+  #medal-modal.open img {
+    transform: scale(1);
+  }
+  #medal-modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.8;
+  }
+  #medal-modal-close:hover { opacity: 1; }
+  .medal img { cursor: zoom-in; }
 </style>
 </head>
 <body>
@@ -1892,7 +1969,7 @@
     <p class="hero-tagline">la pasión y el sabor se encuentran en cada botella</p>
     <p class="hero-location"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Muturayo · Uriondo · Tarija · Bolivia</p>
     <div class="hero-cta">
-      <a href="#catalogo" onclick="ir('catalogo')" class="btn-primary"><span>Ver Catálogo</span></a>
+      <a href="#catalogo" onclick="irDirecto('catalogo')" class="btn-primary"><span>Ver Catálogo</span></a>
       <a href="#bodega" onclick="ir('bodega')" class="btn-secondary">Conocer la Bodega</a>
     </div>
   </div>
@@ -1913,22 +1990,22 @@
       
       <div class="premios-grid">
         <div class="premio-item">
-          <div class="medal"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#cd7f32" stroke-width="1.5"><circle cx="12" cy="15" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+          <div class="medal"><img src="images/medalla-2020.png" alt="Medalla de Bronce" style="width:90px;height:auto;object-fit:contain;transform:scale(1.5);transform-origin:center center;"></div>
           <div class="year">2020</div>
           <div class="desc">Medalla de Bronce Internacional</div>
         </div>
         <div class="premio-item">
-          <div class="medal"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><polyline points="8 2 12 2 16 2"/><path d="M16 2v4c0 3.31-2.69 6-6 6S4 9.31 4 6V2"/><path d="M20 2h-4"/><path d="M4 2H0v4c0 3.31 2.69 6 6 6"/><line x1="12" y1="12" x2="12" y2="17"/><rect x="8" y="17" width="8" height="4"/></svg></div>
+          <div class="medal"><img src="images/medalla1er-lugar.png" alt="Medalla 1er Lugar" style="width:90px;height:auto;object-fit:contain;transform:scale(1.5);transform-origin:center center;"></div>
           <div class="year">2022</div>
           <div class="desc">2 Reconocimientos · Vendimia</div>
         </div>
         <div class="premio-item">
-          <div class="medal"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><circle cx="12" cy="15" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+          <div class="medal"><img src="images/medalla-3er-lugar.png" alt="Medalla 3er Lugar" style="width:90px;height:auto;object-fit:contain;transform:scale(1.5);transform-origin:center center;"></div>
           <div class="year">2019</div>
           <div class="desc">Validación Chapaca · Valle Concepción</div>
         </div>
         <div class="premio-item">
-          <div class="medal"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c4732a" stroke-width="1.5"><circle cx="12" cy="15" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+          <div class="medal"><img src="images/medalla-2023.png" alt="Medalla 2023" style="width:90px;height:auto;object-fit:contain;transform:scale(1.5);transform-origin:center center;"></div>
           <div class="year">2023</div>
           <div class="desc">2 Medallas con Reconocimientos</div>
         </div>
@@ -1953,7 +2030,7 @@
             <div class="stat-label">Variedades únicas</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number" data-count="2500">2500</div>
+            <div class="stat-number" data-count="1675">1675</div>
             <div class="stat-label">msnm · Vinos de altura</div>
           </div>
           <div class="stat-item">
@@ -2010,6 +2087,11 @@
           <p class="timeline-year">2019 · 2020 · 2022 · 2023</p>
           <h3 class="timeline-title">Reconocimientos y premios</h3>
           <p class="timeline-text">Ganadores en las validaciones de la Vendimia Chapaca del Valle de la Concepción. En 2020 obtienen su primer premio internacional — una Medalla de Bronce. En 2022 y 2023 suman más reconocimientos y medallas que consolidan a Don José como referente de la vitivinicultura tarijeña.</p>
+          <div class="reconocimientos-galeria">
+            <img src="images/reconocimiento-1.png" alt="Reconocimiento 2019" class="reconocimiento-img">
+            <img src="images/reconocimiento-23.png" alt="Reconocimiento 2023-2024" class="reconocimiento-img">
+            <img src="images/reconocimiento-23-24.png" alt="Reconocimiento 2023" class="reconocimiento-img">
+          </div>
         </div>
       </div>
 
@@ -2276,14 +2358,16 @@
         </div>
       </div>
 
-      <!-- DON JOSÉ CLÁSICO TINTO 
+      <!-- DON JOSÉ CLÁSICO TINTO -->
       <div class="vino-card card-tinto" data-tipo="tinto">
         <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Tinto Clásico</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Tinto Clásico</div>
+            <div class="card-badge">Vinos de Altura</div>
+          </div>
           <div class="card-nombre">Don José</div>
           <div class="card-variedad">Tannat, Syrah, Barbera y Rivier · Cosecha 2020</div>
-          <div class="card-badge">Vinos de Altura</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2302,16 +2386,18 @@
           </div>
           <div class="card-vista"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Color intenso y profundo en tonalidades de rojo y púrpura.</div>
         </div>
-      </div>-->
+      </div>
 
-      <!-- DON JOSÉ SEMIDULCE TINTO 
+      <!-- DON JOSÉ SEMIDULCE TINTO -->
       <div class="vino-card card-tinto" data-tipo="tinto">
         <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Tinto Semidulce</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Tinto Semidulce</div>
+            <div class="card-badge">Vino Chapaco</div>
+          </div>
           <div class="card-nombre">Don José</div>
           <div class="card-variedad">Tannat, Syrah, Barbera · Cosecha 2022</div>
-          <div class="card-badge">Vino Chapaco</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2330,7 +2416,7 @@
           </div>
           <div class="card-vista"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Color rojo oscuro e intenso, con tonalidades variables.</div>
         </div>
-      </div>-->
+      </div>
 
       <!-- DON JOSÉ BLANCO CLÁSICO -->
       <div class="vino-card card-blanco" data-tipo="blanco">
@@ -2362,14 +2448,16 @@
         </div>
       </div>
 
-      <!-- DON JOSÉ BLANCO SEMIDULCE
+      <!-- DON JOSÉ BLANCO SEMIDULCE -->
       <div class="vino-card card-blanco" data-tipo="blanco">
         <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1568213816046-0ee1c42bd559?w=300&h=620&fit=crop&q=88" loading="lazy" alt="Vino Don José" alt="botella" loading="lazy"></div>
 <div class="card-header">
-          <div class="card-tipo">Vino Blanco Semidulce</div>
+          <div class="card-header-top">
+            <div class="card-tipo">Vino Blanco Semidulce</div>
+            <div class="card-badge">Vinos de Altura</div>
+          </div>
           <div class="card-nombre">Don José</div>
           <div class="card-variedad">Moscatel de Alejandría y Chardonnay · Cosecha 2022</div>
-          <div class="card-badge">Vinos de Altura</div>
         </div>
         <div class="card-body">
           <p class="card-section-title">Características</p>
@@ -2388,7 +2476,7 @@
           </div>
           <div class="card-vista"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Color amarillo pálido o dorado, con matices verdosos.</div>
         </div>
-      </div> -->
+      </div>
 
       <!-- SINGANI -->
       <div class="vino-card card-singani" data-tipo="singani">
@@ -2446,11 +2534,16 @@
         <h4>WhatsApp</h4>
         <p><a href="https://wa.me/59167399299" target="_blank">+591 67399299</a></p>
       </div>
-      <div class="contacto-card">
-        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h4>Dirección</h4>
-        <p>B/San Martín, Av. Héroes de la Independencia 0610<br>Tarija, Bolivia</p>
-      </div>
+      <a class="contacto-card" href="https://maps.app.goo.gl/E2tMRqcBLL9LYv7g6?g_st=aw" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h4>La Bodega</h4>
+        <p>Muturayo · Uriondo<br>Tarija, Bolivia<br><span style="color:var(--oro);font-size:0.8rem;">Ver en Google Maps</span></p>
+      </a>
+      <a class="contacto-card" href="https://maps.app.goo.gl/v7SJ74UE7kywAwAP9?g_st=aw" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h4>La Tienda</h4>
+        <p>B/San Martín, Av. Héroes<br>de la Independencia 0610<br><span style="color:var(--oro);font-size:0.8rem;">Ver en Google Maps</span></p>
+      </a>
       <a class="contacto-card" href="https://www.facebook.com/share/17okPXMxAe/" target="_blank" rel="noopener" style="text-decoration:none;">
         <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
         <h4>Facebook</h4>
@@ -2478,7 +2571,7 @@
   <img class="footer-logo-img" src="images/logo2.png" alt="Bodega Los Hijos de Sánchez">
   <div class="footer-tagline">Vinos y Singanis · Un vino tarijeño con sabor chapaco</div>
   <div class="footer-bottom">
-    © 2024 Viñedos y Bodega Artesanal "Los Hijos de Sánchez" · Muturayo, Uriondo, Tarija, Bolivia
+    © 2026 Viñedos y Bodega Artesanal "Los Hijos de Sánchez" · Municipio de Uriondo · Provincia José María Avilés · Departamento de Tarija · Muturayo
   </div>
 </footer>
 
@@ -2502,6 +2595,15 @@
     if (!el) return;
     var navH = document.getElementById('main-nav').offsetHeight || 70;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'smooth' });
+    closeMenu();
+  }
+
+  /* ── Salto instantáneo (botón hero) ── */
+  function irDirecto(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var navH = document.getElementById('main-nav').offsetHeight || 70;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'instant' });
     closeMenu();
   }
 
@@ -2673,6 +2775,12 @@
   });
 </script>
 
+<!-- ─── MODAL MEDALLAS ─── -->
+<div id="medal-modal" role="dialog" aria-modal="true" aria-label="Medalla">
+  <button id="medal-modal-close" aria-label="Cerrar">&times;</button>
+  <img id="medal-modal-img" src="" alt="Medalla">
+</div>
+
 <!-- ─── LIGHTBOX ─── -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de vinos">
   <div class="lb-overlay" id="lb-overlay"></div>
@@ -2840,6 +2948,37 @@
     var dx = e.changedTouches[0].clientX - touchX0;
     if (Math.abs(dx) > 48) go(dx > 0 ? current - 1 : current + 1);
   }, { passive: true });
+})();
+
+/* ─── Modal Medallas ─── */
+(function () {
+  var modal = document.getElementById('medal-modal');
+  var mImg  = document.getElementById('medal-modal-img');
+
+  function openModal(src, alt) {
+    mImg.src = src;
+    mImg.alt = alt || 'Medalla';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.medal img, .reconocimiento-img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      openModal(img.src, img.alt);
+    });
+  });
+
+  document.getElementById('medal-modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
 })();
 </script>
 </body>
