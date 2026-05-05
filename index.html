@@ -688,7 +688,7 @@
 
   /* ─── HISTORIA ─── */
   #historia {
-    padding: 8rem 2rem;
+    padding: 8rem 2rem 5rem;
     background: linear-gradient(160deg, #0d0d0d 0%, #111111 100%);
     position: relative;
     overflow: hidden;
@@ -732,6 +732,10 @@
     gap: 2.5rem;
     margin-bottom: 3rem;
     padding-left: 0.5rem;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
   }
 
   .timeline-dot {
@@ -1364,7 +1368,8 @@
     .hero-title { font-size: clamp(3rem, 15vw, 5rem); }
 
     /* ── Reducir espacios verticales en móvil ── */
-    #bodega, #historia, #catalogo, #contacto { padding: 4rem 1.2rem; }
+    #bodega, #catalogo, #contacto { padding: 4rem 1.2rem; }
+    #historia { padding: 4rem 1.2rem 0; }
     #visita { padding: 3.5rem 1.2rem; }
   }
 
@@ -2146,7 +2151,7 @@
 
 <!-- ─── FOTO PAREJA ─── -->
 <div style="width:100vw;position:relative;left:50%;transform:translateX(-50%);overflow:hidden;background:#0c0c0c;">
-  <img src="images/donjose.png" alt="Bodega Los Hijos de Sánchez, Muturayo" style="width:100%;height:auto;display:block;">
+  <img src="images/donjose.webp" alt="Bodega Los Hijos de Sánchez, Muturayo" style="width:100%;height:auto;display:block;">
 </div>
 
 <!-- ─── VISITA LA BODEGA ─── -->
@@ -2230,7 +2235,7 @@
   <!-- Galería de experiencias -->
   <div class="experiencias-gallery">
     <div class="gallery-item">
-      <img src="https://don-jose-vinos.vercel.app/images/foto1.png"
+      <img src="./images/foto1.webp"
            alt="Viñedos Don José" loading="lazy">
       <div class="gallery-caption">
         <strong>Los Viñedos</strong>
@@ -2238,7 +2243,7 @@
       </div>
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=600&h=300&fit=crop&q=85"
+      <img src="./images/foto2.webp"
            alt="Degustación de vinos Don José" loading="lazy">
       <div class="gallery-caption">
         <strong>Degustación</strong>
@@ -2592,10 +2597,10 @@
         <div class="card-img-wrap"><img src="./images/rosado.webp" loading="lazy" alt="Vino Rosé"></div>
         <div class="card-header">
           <div class="card-header-top">
-            <div class="card-tipo">Vino Rosado Varietal</div>
+            <div class="card-tipo">Vino Rosado Seco</div>
             <div class="card-badge">Rosado</div>
           </div>
-          <div class="card-nombre">Rosé</div>
+          <div class="card-nombre">Chapaco Rosé</div>
           <div class="card-variedad">Vino Rosado – Bodega Hijos de Sánchez</div>
         </div>
         <div class="card-body">
