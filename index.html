@@ -1928,6 +1928,122 @@
   }
   #medal-modal-close:hover { opacity: 1; }
   .medal img { cursor: zoom-in; }
+
+  /* ─── CARRUSEL DON JOSÉ ─── */
+.dj-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0c0c0c;
+}
+.dj-track {
+  display: flex;
+  transition: transform .7s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+  width: 100%;
+}
+.dj-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+}
+.dj-slide-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(.85) brightness(.75);
+  display: block;
+  transition: transform 8s ease;
+}
+.dj-slide.active .dj-slide-img { transform: scale(1.06); }
+.dj-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 100%);
+  pointer-events: none;
+}
+.dj-caption {
+  position: absolute;
+  bottom: 2.5rem; left: 3rem; right: 3rem;
+  z-index: 2;
+}
+.dj-caption-eyebrow {
+  font-size: .65rem;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  color: var(--oro);
+  margin-bottom: .5rem;
+  opacity: 0; transform: translateY(10px);
+  transition: all .55s .15s;
+}
+.dj-slide.active .dj-caption-eyebrow { opacity: 1; transform: translateY(0); }
+.dj-caption-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--crema);
+  line-height: 1.1;
+  opacity: 0; transform: translateY(14px);
+  transition: all .55s .28s;
+}
+.dj-slide.active .dj-caption-title { opacity: 1; transform: translateY(0); }
+.dj-caption-sub {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--gris-calido);
+  margin-top: .4rem;
+  opacity: 0; transform: translateY(10px);
+  transition: all .55s .38s;
+}
+.dj-slide.active .dj-caption-sub { opacity: 1; transform: translateY(0); }
+
+.dj-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(201,168,76,.1);
+  border: 1px solid rgba(201,168,76,.28);
+  color: var(--oro);
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1.5rem;
+  transition: all .25s;
+}
+.dj-btn:hover { background: rgba(201,168,76,.22); border-color: rgba(201,168,76,.6); }
+.dj-btn:active { transform: translateY(-50%) scale(.93); }
+.dj-prev { left: 1.2rem; }
+.dj-next { right: 1.2rem; }
+
+.dj-dots {
+  position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+  display: flex; gap: .5rem; z-index: 10;
+}
+.dj-dot {
+  width: 24px; height: 2px;
+  background: rgba(201,168,76,.28);
+  border: none; cursor: pointer; padding: 0;
+  transition: all .3s;
+}
+.dj-dot.active { background: var(--oro); width: 42px; }
+
+.dj-counter {
+  position: absolute; top: 1.2rem; right: 1.5rem; z-index: 10;
+  font-size: .62rem; letter-spacing: .25em;
+  color: rgba(245,234,216,.4); text-transform: uppercase;
+}
+.dj-progress {
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; background: rgba(201,168,76,.2);
+  z-index: 10; width: 100%;
+}
+.dj-progress-bar { height: 100%; background: var(--oro); width: 0%; transition: width linear; }
+
+@media (max-width: 768px) {
+  .dj-slide { height: 380px; }
+  .dj-caption { left: 1.2rem; right: 1.2rem; bottom: 1.8rem; }
+  .dj-caption-title { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .dj-btn { width: 38px; height: 38px; font-size: 1.2rem; }
+}
 </style>
 </head>
 <body>
@@ -2149,10 +2265,100 @@
   </div>
 </section>
 
+
+
 <!-- ─── FOTO PAREJA ─── -->
 <div style="width:100vw;position:relative;left:50%;transform:translateX(-50%);overflow:hidden;background:#0c0c0c;">
   <img src="images/donjose.webp" alt="Bodega Los Hijos de Sánchez, Muturayo" style="width:100%;height:auto;display:block;">
 </div>
+
+<!-- ─── CARRUSEL DE FOTOS ─── -->
+<section id="galeria" style="background:#0c0c0c; padding:6rem 0 0;">
+  <div class="section-header" style="max-width:900px; margin:0 auto 3rem; padding:0 2rem;">
+    <p class="section-eyebrow">Galería</p>
+    <h2 class="section-title">Nuestra <em>Bodega</em></h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="dj-slider" id="djSlider">
+    <div class="dj-counter" id="djCounter">01 / 06</div>
+
+    <div class="dj-track" id="djTrack">
+
+      <!-- SLIDE 1 — cambia src por tu imagen -->
+      <div class="dj-slide active">
+        <img class="dj-slide-img" src="./images/ufoto1.jpg" alt="Viñedos Don José">
+        <div class="dj-overlay"></div>
+        <div class="dj-caption">
+          <div class="dj-caption-eyebrow">Muturayo · Uriondo · Tarija</div>
+          <div class="dj-caption-title">Nuestros Viñedos</div>
+          <div class="dj-caption-sub">Vinos de altura a 1.675 m.s.n.m.</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="dj-slide">
+        <img class="dj-slide-img" src="./images/ufoto2.webp" alt="Degustación">
+        <div class="dj-overlay"></div>
+        <div class="dj-caption">
+          <div class="dj-caption-eyebrow">Experiencia Única</div>
+          <div class="dj-caption-title">Degustación y Maridaje</div>
+          <div class="dj-caption-sub">Con vista al Valle de la Concepción</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="dj-slide">
+        <img class="dj-slide-img" src="./images/ufoto3.webp" alt="Vendimia">
+        <div class="dj-overlay"></div>
+        <div class="dj-caption">
+          <div class="dj-caption-eyebrow">Tradición Chapaca</div>
+          <div class="dj-caption-title">Vendimia Artesanal</div>
+          <div class="dj-caption-sub">Cosecha seleccionada a mano</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="dj-slide">
+        <img class="dj-slide-img" src="./images/ufoto4.webp" alt="Viñedo 2">
+        <div class="dj-overlay"></div>
+        <div class="dj-caption">
+          <div class="dj-caption-eyebrow">Valle de la Concepción</div>
+          <div class="dj-caption-title">Tierra Chapaca</div>
+          <div class="dj-caption-sub">Suelo, agua, clima y aire únicos</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="dj-slide">
+        <img class="dj-slide-img" src="./images/ufoto5.webp" alt="Copa de vino">
+        <div class="dj-overlay"></div>
+        <div class="dj-caption">
+          <div class="dj-caption-eyebrow">Selección Artesanal</div>
+          <div class="dj-caption-title">Catálogo Don José</div>
+          <div class="dj-caption-sub">Tintos, blancos, rosados y singani</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6 -->
+      <div class="dj-slide">
+        <img class="dj-slide-img" src="./images/ufoto6.webp" alt="Bodega">
+        <div class="dj-overlay"></div>
+        <div class="dj-caption">
+          <div class="dj-caption-eyebrow">Los Hijos de Sánchez</div>
+          <div class="dj-caption-title">Bodega Artesanal</div>
+          <div class="dj-caption-sub">Más de 40 años de tradición</div>
+        </div>
+      </div>
+
+    </div><!-- fin dj-track -->
+
+    <button class="dj-btn dj-prev" id="djPrev">&#8249;</button>
+    <button class="dj-btn dj-next" id="djNext">&#8250;</button>
+    <div class="dj-dots" id="djDots"></div>
+    <div class="dj-progress"><div class="dj-progress-bar" id="djBar"></div></div>
+  </div>
+</section>
 
 <!-- ─── VISITA LA BODEGA ─── -->
 <section id="visita">
@@ -3150,6 +3356,60 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
   });
+})();
+
+
+(function(){
+  var track  = document.getElementById('djTrack');
+  var slides = track.querySelectorAll('.dj-slide');
+  var dotsEl = document.getElementById('djDots');
+  var counter= document.getElementById('djCounter');
+  var bar    = document.getElementById('djBar');
+  var n      = slides.length;
+  var cur    = 0;
+  var AUTO   = 5000;
+  var timer, barTimer;
+
+  function pad(x){ return x<10?'0'+x:x; }
+
+  slides.forEach(function(_,i){
+    var d = document.createElement('button');
+    d.className = 'dj-dot' + (i===0?' active':'');
+    d.addEventListener('click', function(){ go(i); });
+    dotsEl.appendChild(d);
+  });
+
+  function go(idx){
+    clearInterval(timer); clearTimeout(barTimer);
+    slides[cur].classList.remove('active');
+    dotsEl.children[cur].classList.remove('active');
+    cur = ((idx%n)+n)%n;
+    slides[cur].classList.add('active');
+    dotsEl.children[cur].classList.add('active');
+    track.style.transform = 'translateX(-'+cur+'00%)';
+    counter.textContent = pad(cur+1)+' / '+pad(n);
+    startBar();
+    timer = setInterval(function(){ go(cur+1); }, AUTO);
+  }
+
+  function startBar(){
+    bar.style.transition='none'; bar.style.width='0%';
+    barTimer = setTimeout(function(){
+      bar.style.transition='width '+AUTO+'ms linear'; bar.style.width='100%';
+    }, 40);
+  }
+
+  document.getElementById('djPrev').addEventListener('click', function(){ go(cur-1); });
+  document.getElementById('djNext').addEventListener('click', function(){ go(cur+1); });
+
+  var tx0=0;
+  document.getElementById('djSlider').addEventListener('touchstart',function(e){ tx0=e.touches[0].clientX; },{passive:true});
+  document.getElementById('djSlider').addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx0;
+    if(Math.abs(dx)>50) go(dx>0?cur-1:cur+1);
+  },{passive:true});
+
+  go(0);
 })();
 </script>
 </body>
